@@ -1,0 +1,117 @@
+#Criando banco de dados
+ 
+           usuarios
+
+
+      n      Jogos       n
+
+      1                  1   
+    Generos          Produtoras
+
+create database bd_games default character set utf8 collate utf8_general_ci;
+
+#Criando tabela usuarios
+
+create table usuarios (
+usuario varchar(10) not null ,
+nome varchar(30) not null,
+senha varchar(60) not null,
+tipo varchar(10) not null default 'editor',
+primary key(usuario)
+) engine=InnoDB default charset=utf8;
+
+#Criando tabela generos
+
+create table generos (
+cod int(11) not null ,
+genero varchar(20) not null,
+primary key(cod)
+) engine=InnoDB default charset=utf8;
+
+#Criando tabela produtoras
+
+create table produtoras (
+cod int(11) not null,
+produtora varchar(20) not null,
+pais varchar(15) not null,
+primary key(cod)
+) engine=InnoDB default charset=utf8;
+
+#Criando tabela Jogos
+
+create table jogos(
+cod int(11) not null,
+nome varchar(40) not null,
+genero int(11) not null,
+produtora int(11) not null,
+descricao text not null,
+nota decimal(4,2) not null,
+capa varchar(40) default null,
+primary key(cod),
+foreign key(genero) references generos(cod),
+foreign key(produtora) references produtoras(cod)
+) engine=InnoDB default charset=utf8;
+
+
+#Ver a tabela
+
+describe nome_da_tabela;
+describe jogos;
+
+#Inserindo dados na tabela generos
+
+insert into generos values
+(1, 'Ação'),
+(2, 'Aventura'),
+(3, 'Terror'),
+(4, 'Plartaforma'),
+(5, 'Estratégia'),
+(6, 'RPG'),
+(7, 'Esporte'),
+(8, 'Corrida'),
+(9, 'Tabuleiro'),
+(10, 'Puzze'),
+(11, 'Luta'),
+(12, 'Musical');
+
+#Ver o que foi Inserido
+
+SELECT * FROM generos;
+
+#Inserindo dados na tabela generos
+
+insert into produtoras (cod, produtora, pais) values
+(1, 'Microsoft', 'EUA)'),
+(2, 'Tencent', 'China'),
+(3, 'Nintendo', 'Japão'),
+(4, 'Sony', 'Japão'),
+(5, 'Activision', 'EUA'),
+(6, 'EA', 'EUA'),
+(7, 'Sega', 'Japão'),
+(8, 'Namco Bandai', 'Japão'),
+(9, 'Konami', 'Japão'),
+(10, 'Ubisoft', 'EUA'),
+(11, 'Valve', 'EUA'),
+(12, 'Square Enix', 'Japão'),
+(13, 'Take Two', 'EUA'),
+(14, 'Capcom', 'Japão');
+
+#Inserindo dados na tabela jogos
+
+insert into jogos (cod, nome, genero, produtora, descricao, nota, capa) values
+(1, 'Super Mario Odyssey', 2, 3, 'Em Super Mario Odyssey, o jogador joga como Mario em suas aventuras por terras além do Reino dos Cogumelos com o auxílio de um novo personagem introduzido no jogo, o Cappy. Esse "chapéu vivo" garante um novo acréscimo à dificuldade e a dinâmica já vista nos jogos anteriores, pois além de ser uma forma de ataque além do seu tradicional pulo, ele dá também a habilidade de "capturar" os carismáticos inimigos da série e alguns objetos. A nova mecânica funciona da seguinte maneira: ao chacoalhar os Joy-Cons ou apertar um simples botão, Cappy é arremessado e volta para a cabeça de Mario automaticamente, apenas se não encostar em algo que ele possa interagir. Há também vários outros simples movimentos com os Joy-Cons que fazem o chapéu rodear o cenário de maneiras diferentes, sendo útil de várias maneiras, como por exemplo a possibilidade de coletar moedas eliminar inimigos ao seu redor com mais rapidez. As mecânicas já vistas anteriormente como o "Salto Bomba" e o "Salto Escalada" também estão presentes no jogo.', '9.70', 'mario.png'),
+(2, 'Call of Duty: Black Ops', 1, 5, 'Call of Duty: Black Ops é um jogo eletrônico de tiro em primeira pessoa desenvolvido pela Treyarch, publicado pela Activision e lançado mundialmente em 9 de novembro de 2010 para as plataformas Microsoft Windows, Xbox 360, PlayStation 3, Wii e Nintendo DS. Anunciado em 30 de abril de 2010, o jogo é o sétimo capítulo da série Call of Duty, e o primeiro situado durante a Guerra Fria. É o terceiro da série a ser desenvolvido pela Treyarch, sendo uma sequência direta de Call of Duty: World at War. Nas primeiras 24 horas de lançamento, o jogo vendeu mais de 5,6 milhões de unidades, sendo 4,2 milhões nos Estados Unidos e 1,4 milhão no Reino Unido, batendo o recorde alcançado por seu antecessor, Modern Warfare 2, em aproximadamente 2,3 milhões de cópias. A 1 de maio de 2012 foi revelado a sequência Call of Duty: Black Ops II com lançamento para novembro de 2012.' , '7.90', 'cod.png'),
+(3, 'League of Legends', 1, 2, 'League of Legends (abreviado como LoL e comumente referido como League) é um jogo eletrônico do gênero multiplayer online battle arena (MOBA) desenvolvido e publicado pela Riot Games. Foi lançado em outubro de 2009 para Microsoft Windows e em março de 2013 para macOS. Inspirado em Defense of the Ancients (DotA), uma modificação de Warcraft III, os fundadores da Riot buscaram desenvolver um jogo autônomo do mesmo gênero. Desde o seu lançamento, o título é gratuito para jogar e monetizado por meio de personalização de personagens, a qual é obtenível através de uma moeda virtual comprável com dinheiro real. No jogo, duas equipes de cinco jogadores batalham em um combate jogador contra jogador (PvP), com cada equipe ocupando e defendendo sua metade do mapa. Cada um dos dez jogadores controla um personagem, conhecido como "campeão", com habilidades únicas e diferentes estilos de jogo.', '7.50', 'lol.png'),
+(4, 'Donkey Kong Country: Tropical Freeze', 2, 3, 'Donkey Kong Country: Tropical Freeze é um jogo eletrônico de plataforma desenvolvido pela Retro Studios em colaboração com a Monster Games e publicado pela Nintendo para o Wii U. Tropical Freeze é uma sequência direta de Donkey Kong Country Returns e foi lançado em 2014. Um porte para Nintendo Switch foi lançado em maio de 2018.Donkey Kong e sua família devem se aventurar por cinco ilhas para salvar seu lar, Donkey Kong Island, depois que ela é congelada pelos Snowmads - Um grupo de invasores dos mares do norte. Como seu antecessor, o jogo recebeu críticas principalmente positivas. Os elogios foram direcionados ao design de níveis, jogabilidade e trilha sonora, embora seu alto nível de dificuldade tenha recebido opiniões mais mistas.', '9.20', 'donkey.png'),
+(5, 'Sonic the Hedgehog', 2, 7, 'Sonic the Hedgehog[a] é uma série de jogos e uma franquia multimídia japonesa criada pelo Sonic Team e produzida pela Sega. A franquia segue Sonic, cuja vida pacífica é sempre interrompida pelo antagonista principal da série, Dr. Eggman (nome real : Dr. Ivo Robotnik). Sonic - normalmente junto de um de seus aliados, como Tails e Knuckles - se aventuram para parar o vilão insano e seus planos para dominação mundial. O primeiro jogo da série Sonic, lançado em 1991, foi concebido pela divisão da Sega, Sonic Team após um pedido para um novo mascote. O título foi um sucesso, e foi renovado para várias sequelas, que levaram a Sega a liderança no rumo dos consoles de video-game da era 16-bit do começo até a metade dos anos 90.[1] Atualmente, é uma das franquias mais famosas e mais lucrativas da indústria dos videogames.', '8.90', 'sonic.png'),
+(6, 'God of War', 1, 4, 'God of War é uma série de jogos eletrônicos de ação-aventura criada por David Jaffe da Santa Monica Studio, da Sony. Iniciada em 2005 no console PlayStation 2 (PS2), tornou-se carro-chefe para a marca PlayStation, consistindo em oito jogos em várias plataformas, com um nono atualmente em desenvolvimento. Baseada em distintas mitologias, a história segue Kratos, um guerreiro espartano que foi levado a matar sua família por seu antigo mestre, o deus da guerra Ares. Isso desencadeia uma série de eventos que levam à guerras com os panteões mitológicos. A era da mitologia grega da série mostra Kratos seguindo um caminho de vingança devido às maquinações dos deuses do Olimpo, enquanto a era da mitologia nórdica, que apresenta seu filho Atreus como protagonista secundário, mostra um Kratos mais velho em um caminho de redenção, o que inadvertidamente coloca os dois em conflito com os deuses nórdicos.', '9.30', 'gow.png'),
+(7, 'Counter-Strike', 1, 11, 'Counter-Strike (também abreviado por CS) é um popular jogo eletrônico de tiro em primeira pessoa.[2] Inicialmente criado como um "mod" de Half-Life para jogos online, foi desenvolvido por Minh Le e Jess Cliffe e depois adquirido pela Valve Corporation. Foi lançado em 1999, porém em 2000 ele começou a ser comercializado oficialmente, e posteriormente foram feitas versões para Xbox, Mac OS X e Linux. Atualmente o game é jogado na versão Counter-Strike: Global Offensive. O jogo é baseado em rodadas nas quais equipes de contraterroristas e terroristas combatem-se até a eliminação completa de um dos times, e tem como objetivo principal plantar e desarmar bombas, ou sequestrar e salvar reféns.Counter-Strike foi um dos responsáveis pela massificação dos jogos por rede no início do século, sendo considerado o grande responsável pela popularização das LAN houses no mundo. O jogo é considerado o originador do esporte eletrônico, onde muitos jogadores levam-no a sério e recebem salários fixos, existindo até times profissionais, e que são patrocinados por grandes empresas como a Intel e a NVIDIA.', '8.80', 'cod.png'),
+(8, 'Resident Evil 6', 3, 14, 'Resident Evil 6, chamado no Japão de Biohazard 6 (バイオハザード 6 Baiohazādo Shikkusu?), é um videojogo do gênero ação jogado em terceira pessoa desenvolvido e publicado pela Capcom. Apesar do nome é o nono jogo da série principal Resident Evil e foi lançado em 2 de outubro de 2012 para PlayStation 3 e Xbox 360. A versão para Microsoft Windows foi lançada no dia 22 de março de 2013. O game também ganhou uma versão completa com todas as DLC para PlayStation 4 e Xbox One em 29 de março de 2016.A história é contada a partir das perspectivas de Chris Redfield, membro e fundador da BSAA traumatizado por ter falhado em uma missão; Leon S. Kennedy, um sobrevivente de Raccoon City e agente especial do governo; Jake Muller, filho ilegítimo de Albert Wesker e associado de Sherry Birkin; e Ada Wong, uma agente solitária com ligações aos ataques bio-terroristas pela Neo-Umbrella.O conceito do jogo começou em 2009, mas começou a ser produzido no ano seguinte sobre a supervisão de Hiroyuki Kobayashi, que já tinha produzido Resident Evil 4. A equipe de produção acabou por crescer e tornou-se na maior de sempre a trabalhar num jogo da série Resident Evil.', '8.0', 'resident.png'),
+(9, 'Grand Theft Auto V', 2, 13, 'Grand Theft Auto V é um jogo eletrônico de ação-aventura desenvolvido pela Rockstar North e publicado pela Rockstar Games. É o sétimo título principal da série Grand Theft Auto e foi lançado originalmente em 17 de setembro de 2013 para PlayStation 3 e Xbox 360, com remasterizações lançadas em 2014 para PlayStation 4 e Xbox One, em 2015 para Microsoft Windows e em 2022 para PlayStation 5 e Xbox Series X/S. O jogo se passa no estado ficcional de San Andreas, com a história da campanha um jogador seguindo três criminosos e seus esforços para realizarem assaltos sob a pressão de uma agência governamental. O mundo aberto permite que os jogadores naveguem livremente pelas áreas rurais e urbanas de San Andreas. A jogabilidade é mostrada em uma perspectiva de primeira ou terceira pessoa e o mundo pode ser atravessado a pé ou com veículos. Os jogadores controlam três protagonistas e podem alternar entre eles durante e fora das missões. A história é centrada em sequências de assaltos, com muitas missões envolvendo a jogabilidade de tiro e direção. Um sistema de "procurado" define a resposta e agressividade das forças da lei contra os crimes cometidos pelo jogador.', '9.0', 'gta.png'),
+(10, 'Metal Gear Solid V: The Phantom Pain', 6, 9, 'Metal Gear Solid V: The Phantom Pain (メタルギアソリッドV ザ・ファントム・ペイン Metaru Gia Soriddo Faibu Za Fantomu Pein?) é um jogo eletrônico de ação-aventura furtiva desenvolvido pela Kojima Productions, co-produzido pela Kojima Productions Los Angeles e realizado, desenhado, co-produzido e co-escrito por Hideo Kojima. Foi publicado pela Konami para Microsoft Windows, PlayStation 3, PlayStation 4, Xbox 360 e Xbox One a 1 de Setembro de 2015. The Phantom Pain é o oitavo título canónico na série Metal Gear e o sexto dentro da sua cronologia fictícia. O jogo serve como continuação para Metal Gear Solid V: Ground Zeroes, mas a sua história é anterior aos eventos ocorridos no jogo original Metal Gear original. Contém o mesmo subtítulo, Tactical Espionage Operations, usado pela primeira vez em Metal Gear Solid: Peace Walker.A acção acontece em 1984, nove anos depois de Ground Zeroes, e segue o mercenário Punished "Venom" Snake,[N 1] à medida que este se aventura na África (no decorrer da Guerra Civil Angolana, na fronteira Angola-Zaire) e no Afeganistão durante a Guerra Soviética-Afegã, para procurar vingança sobre as pessoas que destruíram as suas forças e que quase o mataram durante os eventos ocorridos em Ground Zeroes.', '8.50', 'metal.png'),
+(11, "Assassin's Creed III", 1, 10, "Assassin's Creed III é um jogo de ação-aventura produzido pela Ubisoft e publicado pela Ubisoft durante os meses de Outubro e Novembro de 2012 para Wii U, Xbox 360, PlayStation 3 e Microsoft Windows . É o quinto jogo principal da série Assassin's Creed e o seu terceiro título numerado. Assassin's Creed III é a continuação direta de Assassin's Creed: Revelations de 2011.O enredo decorre de uma história fictícia dentro de eventos reais e segue a batalha ancestral entre os Assassinos, que lutam pela liberdade, e os Templários, que desejam controlar a humanidade. A trama se desenrola no século XXI onde Desmond Miles, o protagonista da série, com a ajuda de uma máquina conhecida como Animus, revive as memórias dos seus ancestrais para o ajudar a descobrir uma maneira de prevenir o Apocalipse de 2012. A história principal se desenrola antes, durante e depois da Revolução Americana entre 1765 e 1783 e segue o ancestral de Desmond, de ascendência mohawk e inglesa, Ratonhnhaké:ton,também conhecido como Connor, enquanto ele luta contra as tentativas dos Templários de controlar a nova nação.", '8.80', 'assassin.png');
+
+#JOIN para o banco de dados
+
+SELECT j.cod, j.nome, g.genero, p.produtora, j.descricao, j.nota, j.capa FROM jogos j
+JOIN generos g ON j.genero = g.cod JOIN produtoras p ON j.produtora = p.cod

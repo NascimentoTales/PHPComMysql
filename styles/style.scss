@@ -1,0 +1,47 @@
+$backgroundColorBody: #ddd;
+$backgroundColorCorpo: #fff;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: tahoma;
+}
+
+body{
+    background-color: $backgroundColorBody;
+
+    #corpo{
+        margin-top: 20px;
+        width: 45%;
+        margin: auto;
+        padding: 20px;
+        background-color: $backgroundColorCorpo;
+        box-shadow: 0px 0px 30px #777;
+        h1{
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table.listagem{
+            width: 100%;
+            text-align: left;
+            border-collapse: collapse; //retira as bordas
+
+            tr{
+                height: 50px;
+            }
+            tr:nth-child(even){
+                background-color: #f2f2f2;
+            }
+            td{
+                border: 1px solid #ddd;
+                padding: 10px;
+            }
+            td:nth-child(1){
+                width: 5%;
+            }
+            td:nth-child(3){
+                width: 10%;
+            }
+        }
+    }
+}
