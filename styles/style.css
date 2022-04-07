@@ -11,9 +11,8 @@ body {
 }
 
 body #corpo {
-  margin-top: 20px;
-  width: 45%;
-  margin: auto;
+  width: 95%;
+  margin: 10px auto 0 auto;
   padding: 20px;
   background-color: #fff;
   -webkit-box-shadow: 0px 0px 30px #777;
