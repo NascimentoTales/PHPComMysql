@@ -13,7 +13,7 @@ body{
 
     #corpo{
         width: 95%;
-        margin: 10px auto 0 auto;
+        margin: 5px auto 0 auto;
         padding: 20px;
         background-color: $backgroundColorCorpo;
         box-shadow: 0px 0px 30px #777;
@@ -41,6 +41,9 @@ body{
             }
             td:nth-child(3){
                 width: 10%;
+            }
+            .mini{
+                width: 150px;
             }
         }
     }

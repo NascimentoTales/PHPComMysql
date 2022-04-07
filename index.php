@@ -8,16 +8,35 @@
     <title>Listagem de Jogos</title>
 </head>
 <body>
+    <?php
+        require_once("includes/banco.php");
+        require_once("includes/functions.php");
+    ?>
+
     <div id="corpo">
-        <h1>Escolha seu Jogo</h1>
-        <table class="listagem">
-            <tr><td>Foto</td><td>Nome</td><td>Adm</td></tr>
-            <tr><td>Foto</td><td>Nome</td><td>Adm</td></tr>
-            <tr><td>Foto</td><td>Nome</td><td>Adm</td></tr>
-            <tr><td>Foto</td><td>Nome</td><td>Adm</td></tr>
-            <tr><td>Foto</td><td>Nome</td><td>Adm</td></tr>
-            <tr><td>Foto</td><td>Nome</td><td>Adm</td></tr>
+        <table class='listagem'>
+
+            <?php
+                $busca = $banco->query("select * from jogos order by nome");
+
+                if (!$busca) {
+                    echo"<p>Falha na busca</p>";
+                } else {
+                    if ($busca->num_rows == 0) {
+                        echo"<tr><td> Nemhum registro encontrado";
+                    }else {
+                        echo"<h1>Escolha seu Jogo</h1>";
+
+                        while ($reg = $busca->fetch_object()) {
+                            $t = thumb($reg->capa);
+                            echo"<tr><td><img src='$t' alt='' class='mini' srcset=''></td><td>$reg->nome<td>Adm";
+                        }
+                    }                
+                }          
+            ?>
+
         </table>
     </div>
+    <?php $banco->close()?>
 </body>
 </html>

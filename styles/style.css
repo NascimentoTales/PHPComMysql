@@ -12,7 +12,7 @@ body {
 
 body #corpo {
   width: 95%;
-  margin: 10px auto 0 auto;
+  margin: 5px auto 0 auto;
   padding: 20px;
   background-color: #fff;
   -webkit-box-shadow: 0px 0px 30px #777;
@@ -49,5 +49,9 @@ body #corpo table.listagem td:nth-child(1) {
 
 body #corpo table.listagem td:nth-child(3) {
   width: 10%;
+}
+
+body #corpo table.listagem .mini {
+  width: 150px;
 }
 /*# sourceMappingURL=style.css.map */
