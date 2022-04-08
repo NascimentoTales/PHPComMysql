@@ -13,7 +13,7 @@
         require_once("includes/functions.php");
     ?>
 
-    <div id="corpo">
+    <div class="corpo">
         <table class='listagem'>
 
             <?php
@@ -29,7 +29,9 @@
 
                         while ($reg = $busca->fetch_object()) {
                             $t = thumb($reg->capa);
-                            echo"<tr><td><img src='$t' alt='' class='mini' srcset=''></td><td>$reg->nome<td>Adm";
+                            echo"<tr><td><img src='$t' alt='' class='mini' srcset=''>";
+                            echo"<td><a href='detalhes.php?cod=$reg->cod'>$reg->nome</a>"; 
+                            echo"<td>Adm";
                         }
                     }                
                 }          

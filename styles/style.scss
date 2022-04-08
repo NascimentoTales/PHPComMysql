@@ -11,7 +11,7 @@ $backgroundColorCorpo: #fff;
 body{
     background-color: $backgroundColorBody;
 
-    #corpo{
+    .corpo{
         width: 95%;
         margin: 5px auto 0 auto;
         padding: 20px;
@@ -44,6 +44,16 @@ body{
             }
             .mini{
                 width: 150px;
+            }
+        }
+        table.detalhes{
+            width: 100%;
+
+            .full{
+                width: 250px;
+            }
+            td{
+                padding: 5px;
             }
         }
     }

@@ -10,7 +10,7 @@ body {
   background-color: #ddd;
 }
 
-body #corpo {
+body .corpo {
   width: 95%;
   margin: 5px auto 0 auto;
   padding: 20px;
@@ -19,39 +19,51 @@ body #corpo {
           box-shadow: 0px 0px 30px #777;
 }
 
-body #corpo h1 {
+body .corpo h1 {
   text-align: center;
   margin-bottom: 20px;
 }
 
-body #corpo table.listagem {
+body .corpo table.listagem {
   width: 100%;
   text-align: left;
   border-collapse: collapse;
 }
 
-body #corpo table.listagem tr {
+body .corpo table.listagem tr {
   height: 50px;
 }
 
-body #corpo table.listagem tr:nth-child(even) {
+body .corpo table.listagem tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-body #corpo table.listagem td {
+body .corpo table.listagem td {
   border: 1px solid #ddd;
   padding: 10px;
 }
 
-body #corpo table.listagem td:nth-child(1) {
+body .corpo table.listagem td:nth-child(1) {
   width: 5%;
 }
 
-body #corpo table.listagem td:nth-child(3) {
+body .corpo table.listagem td:nth-child(3) {
   width: 10%;
 }
 
-body #corpo table.listagem .mini {
+body .corpo table.listagem .mini {
   width: 150px;
+}
+
+body .corpo table.detalhes {
+  width: 100%;
+}
+
+body .corpo table.detalhes .full {
+  width: 250px;
+}
+
+body .corpo table.detalhes td {
+  padding: 5px;
 }
 /*# sourceMappingURL=style.css.map */
